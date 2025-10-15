@@ -1,0 +1,16 @@
+<ul class="menu menu-horizontal bg-base-200 rounded-box my-2">
+
+    <!-- routerLinkActive va sin corchetes porque el valor
+    no es una propiedad es un string.
+
+    routerLink va entre corchetes porque el valor es una propiedad
+    de route. -->
+
+    @for (route of routes; track route.path) {
+        <li>
+            <a [routerLink]="route.path" routerLinkActive="text-accent">
+                {{ route.title }}
+            </a>
+        </li>
+    }
+</ul>

@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
+import BasicPageComponent from './pages/basic-page/basic-page.component';
 
 export const routes: Routes = [
     {
         path: 'basic',
         title: 'Pipes Básicos',
-        loadComponent: () => import('./pages/basic-page/basic-page.component')
+        component: BasicPageComponent
     },
     {
         path: 'numbers',
