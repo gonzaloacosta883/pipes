@@ -22,15 +22,66 @@
   </div>
 </div>
 
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+    <div class="stat">
+        <div class="stat-title">Date Pipe</div>
+        <div class="stat-value">{{ customDate() | date }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date|long|GMT-0300</div>
+        <div class="stat-value">{{ customDate() | date: "long" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+</div>
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date: 'yyyy-MM'</div>
+        <div class="stat-value">{{ customDate() | date: "yyyy-MM" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date|short|GMT-0300</div>
+        <div class="stat-value">{{ customDate() | date: "short" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+</div>
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date: 'dd/MM/yyyy'</div>
+        <div class="stat-value">{{ customDate() | date: "dd/MM/yyyy" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date: 'HH:mm:ss'</div>
+        <div class="stat-value">{{ customDate() | date: "HH:mm:ss" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+
+    <div class="stat">
+        <!-- "GMT-0300" Zona horaria de argentina. -->
+        <div class="stat-title">Date: 'HH:mm:ss'</div>
+        <div class="stat-value">{{ customDate() | date: "EEEE d, MMMM" : "GMT-0300" }}</div>
+        <div class="stat-desc">{{ customDate() }}</div>
+    </div>
+</div>
+
 <div class="divider"></div>
 <div class="flex flex row gap-2">
   <h1 class="text-2xl font-bold">
     Locale Actual:
-    <span class="badge badge-secondary">ES</span>
+    <span class="badge badge-secondary">{{ localeService.getLocale() }}</span>
   </h1>
 
-  <button class="btn btn-primary">Changer en Francais</button>
-  <button class="btn btn-primary">Change to English</button>
-  <button class="btn btn-primary">Cambiar a Español</button>
+  <button (click)="changeLocale('en')" class="btn btn-primary">Change to English</button>
+  <button (click)="changeLocale('es')" class="btn btn-primary">Cambiar a Español</button>
 
 </div>
