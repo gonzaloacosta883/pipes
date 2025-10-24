@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from "../../components/card/card.component";
-import { I18nSelectPipe } from '@angular/common';
+import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
 
 const client1 = {
   name: 'Fernando',
@@ -18,7 +18,7 @@ const client2 = {
 
 @Component({
   selector: 'app-uncommont-page',
-  imports: [CardComponent, I18nSelectPipe],
+  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe],
   templateUrl: './uncommont-page.component.html',
 })
 export default class UncommontPageComponent {
@@ -31,6 +31,25 @@ export default class UncommontPageComponent {
     female: 'invitarla'
   };
 
+  // i18n Plural
+  clientsMap = signal({
+    '=0': 'no tenemos ningún',
+    '=1': 'tenemos una',
+    '=2': 'tenemos dos',
+    other: 'tenemos #',
+  });
+
+  clients = signal([
+    'Maria',
+    'Pedro',
+    'Fernando',
+    'Melissa',
+    'Natalia',
+    'Andrea',
+    'Juan',
+    'Carlos'
+  ]);
+
   changeClient() {
 
     if(this.client() === client1){
@@ -40,6 +59,10 @@ export default class UncommontPageComponent {
 
     this.client.set(client1);
 
+  }
+
+  deleteClient() {
+    this.clients.update((prev) => prev.slice(1));
   }
 
 }
