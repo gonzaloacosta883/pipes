@@ -21,4 +21,20 @@
         </button>
     </app-card>
 
+    <app-card title="SlicePipe">
+        <b>Original</b>
+        <p class="text-primary">
+            {{ clients().join(", ") }}
+        </p>
+
+        <p class="mt-2">Slice:0:2</p>
+        <p class="text-primary">{{ clients() | slice:0:2 }}</p>
+
+        <p class="mt-2">Slice:1:2</p>
+        <p class="text-primary">{{ clients() | slice:1:2 }}</p>
+
+        <p class="mt-2">Slice:0:-3</p>
+        <p class="text-primary">{{ clients() | slice:0:-3 }}</p>
+    </app-card>
+
 </div>
