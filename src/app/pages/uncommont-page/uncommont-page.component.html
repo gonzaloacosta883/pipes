@@ -6,18 +6,15 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
     <app-card title="i18nSelectPipe">
-        <p> Saludos {{ client().name }}, es un placer {{ client().gender | i18nSelect:invitationMap }} a nuestro evento.</p>
+        <p> Saludos {{ client().name }}, es un placer {{ client().gender | i18nSelect:invitationMap }} a nuestro evento.
+        </p>
         <button (click)="changeClient()" class="btn btn-primary">Cambiar cliente</button>
     </app-card>
 
     <app-card title="i18nPluralPipe">
         <p>Actualmente hay {{ clients().length | i18nPlural : clientsMap() }} cliente esperando.</p>
-        <button 
-            [disabled]="clients().length === 0"
-            (click)="deleteClient()"
-            class="btn btn-primary"
-        >
-        Borrar cliente
+        <button [disabled]="clients().length === 0" (click)="deleteClient()" class="btn btn-primary">
+            Borrar cliente
         </button>
     </app-card>
 
@@ -41,6 +38,19 @@
         <pre class="text-primary">{{ clients() | json }}</pre>
         <pre class="text-primary">{{ client() | json }}</pre>
         <a class="text-primary">{{ clients().join(', ') | json | uppercase}}</a>
+    </app-card>
+
+    <app-card title="KeyValuePipe">
+        <!-- El orden es importante -->
+        <!-- <pre class="text-primary">{{ profile | keyvalue | json }}</pre> -->
+        <ul>
+            @for (item of profile | keyvalue; track $index) {
+            <li>
+                <strong class="text-primary mr-1">{{ item.key | titlecase }}:</strong>
+                <span>{{ item.value }}</span>
+            </li>
+            }
+        </ul>
     </app-card>
 
 </div>
