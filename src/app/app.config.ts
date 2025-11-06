@@ -4,7 +4,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 import localeEs from '@angular/common/locales/es-AR';
-import { registerLocaleData } from '@angular/common';
+
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import { LocaleService } from './services/locale.service';
 registerLocaleData(localeEs, 'es');
 
@@ -18,7 +19,13 @@ export const appConfig: ApplicationConfig = {
       // useValue: 'es'
       deps: [LocaleService],
       useFactory: (localeService: LocaleService) => localeService.getLocale()
-    }
+    },
+
+    // HashStrategy
+		{
+			provide: LocationStrategy,
+			useClass: HashLocationStrategy
+		},
 
   ]
 };
