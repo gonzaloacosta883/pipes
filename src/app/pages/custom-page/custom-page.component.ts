@@ -8,6 +8,7 @@ import { HeroTextColorPipe } from '../../pipes/hero-text-color.pipe';
 import { HeroCreatorPipe } from '../../pipes/hero-creator.pipe';
 import { HeroSortByPipe } from '../../pipes/hero-sort-by.pipe';
 import { Hero } from '../../interfaces/hero.interface';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-custom-page',
@@ -17,7 +18,8 @@ import { Hero } from '../../interfaces/hero.interface';
     HeroColorPipe, 
     HeroTextColorPipe, 
     HeroCreatorPipe,
-    HeroSortByPipe
+    HeroSortByPipe,
+    LowerCasePipe
   ],
   templateUrl: './custom-page.component.html',
 })
