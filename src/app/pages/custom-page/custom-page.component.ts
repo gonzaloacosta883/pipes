@@ -9,6 +9,7 @@ import { HeroCreatorPipe } from '../../pipes/hero-creator.pipe';
 import { HeroSortByPipe } from '../../pipes/hero-sort-by.pipe';
 import { Hero } from '../../interfaces/hero.interface';
 import { LowerCasePipe } from '@angular/common';
+import { HeroFilterPipe } from '../../pipes/hero-filter.pipe';
 
 @Component({
   selector: 'app-custom-page',
@@ -19,7 +20,8 @@ import { LowerCasePipe } from '@angular/common';
     HeroTextColorPipe, 
     HeroCreatorPipe,
     HeroSortByPipe,
-    LowerCasePipe
+    LowerCasePipe,
+    HeroFilterPipe
   ],
   templateUrl: './custom-page.component.html',
 })
@@ -31,6 +33,8 @@ export default class CustomPageComponent {
   heroes = signal(heroes);
 
   sortBy = signal< keyof(Hero) | null >(null);
+
+  searchQuery = signal('');
 
   toggleNombre() {
     this.upperCase.update(value => !value);
